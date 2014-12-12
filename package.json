@@ -1,0 +1,22 @@
+{
+  "name": "IntroToJavascript",
+  "version": "0.0.0",
+  "description": "Introduction To Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kapilkumawatca/IntroToJavascript.git"
+  },
+  "author": "kapil kumawat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kapilkumawatca/IntroToJavascript/issues"
+  },
+  "homepage": "https://github.com/kapilkumawatca/IntroToJavascript",
+  "dependencies": {
+    "bower": "^1.3.12"
+  }
+}

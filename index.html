@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Reveal.js 3 Slide Demo</title>
+    <title>Introduction To Javascript</title>
+
+    <meta name="description" content="Presentation on Javascript At CA Technologies">
+    <meta name="author" content="Kapil Kumawat">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
     <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
     <link rel="stylesheet" href="bower_components/reveal.js/css/theme/default.css" id="theme">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        }
+    </script>
     <!--Add support for earlier versions of Internet Explorer -->
     <!--[if lt IE 9]>
     <script src="bower_components/reveal.js/lib/js/html5shiv.js"></script>
@@ -20,30 +43,213 @@
         <!-- ALL SLIDES GO HERE -->
         <!-- Each section element contains an individual slide -->
         <section>
-            <h1>About My Product</h1>
-            <p>My product discussed here</p>
+            <h1>Introduction to Javascript</h1>
+            <p>
+                <small>
+                    By Kapil Kumawat
+                </small>
+            </p>
         </section>
 
         <section id="show-a-link">
-            <h1>Show a live link</h1>
-            <p>Slide 2 discussed here</p>
-            <p>See <a href="http://www.htmlcheats.com">HTMLCheats.com</a><p>
+            <h2>Topics</h2>
+            <ul>
+                <li>Introduction</li>
+                <li>Objects</li>
+                <li>Functions</li>
+                <li>Prototype</li>
+                <li>Closure</li>
+                <li>Closers</li>
+            </ul>
+
         </section>
 
         <section>
-            <h1>Slide 3</h1>
-            <p>How does one revisit an arbitrary slide in code?</p>
-            <p>Visit internal slide<a href="#/show-a-link"> 2</a>
+            <h2>Introdcution</h2>
+            <ul>
+                <li>Language for programming interactive web pages,</li>
+                <li>ECMAScript</li>
+                <li>ES3 1999</li>
+                <li>ES5 2009</li>
+            </ul>
+            <aside class="notes">
+                JavaScript’s popularity led to its
+                formalization in 1997 as an international standard, known officially
+                as ECMAScript. Today there are many competing implementations of
+                JavaScript providing conformance to various versions of the ECMAScript
+                standard.
+                The third edition of the ECMAScript standard (commonly referred
+                to as ES3), which was finalized in 1999, continues to be the most
+                widely adopted version of Java Script. The next major advancement to
+                the standard was Edition 5, or ES5, which was released in 2009. ES5
+                introduced a number of new features as well as standardizing some
+                widely supported but previously unspecified features.
+            </aside>
         </section>
-
+        <section>
+            <section>
+                <h2>JavaScript Syntax</h2>
+                <ul>
+                    <li>Case sensitivity</li>
+                    <li>Whitespace</li>
+                    <li>Semicolons</li>
+                    <li>Comments</li>
+                    <li>Identifiers</li>
+                    <li>Keywords</li>
+                    <li>Variables</li>
+                    <li>Data Types
+                        <ul>
+                            <li>numbers</li>
+                            <li>boolean</li>
+                            <li>string</li>
+                            <li>object</li>
+                            <li>functions</li>
+                        </ul>
+                    </li>
+                    <li>undefined</li>
+                </ul>
+            </section>
+            <section>
+                <h2>JavaScript Syntax</h2>
+                <p>Special mention:</p>
+                <ul>
+                    <li>undefined, NaN and null</li>
+                    <li>"use strict";</li>
+                    <li>isNaN</li>
+                    <li>=== vs ==</li>
+                </ul>
+                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+//Method 1
+function f(x) {
+"use strict";
+var arguments = []; // error: redefinition of arguments
+// ...
+}
+//Method 2
+"use strict";
+function f1(x) {
+var arguments = [];
+// ...
+}
+function f2(x) {
+var arguments = []; // error: redefinition of arguments
+// ...
+}
+                </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Objects</h2>
+                <ul>
+                    <li>Collection of property-value.</li>
+                    <li>A property name can be any string, including the empty string.</li>
+                    <li>Value can have any defined Datatype of Javascript including other objects.</li>
+                    <li>Objects in JavaScript are class-free.</li>
+                </ul>
+                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var empty_object = {};
+var stooge = {
+"first-name": "Jerome",
+"last-name": "Howard"
+};
+                </code></pre>
+            </section>
+            <section>
+                <h2>Objects</h2>
+                <p>Three common ways to create new objects</p>
+                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// Each of the following options will create a new empty object:
+var newObject = {}; // or
+var newObject = Object.create(null); // or
+var newObject = new Object();
+                </code></pre>
+            </section>
+            <section>
+                <h2>Objects</h2>
+                <p>Four common ways to create new properties of objects</p>
+                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// ECMAScript 3 compatible approaches
+// 1. Dot syntax
+newObject.someKey = 'Hello World'; // Write properties
+var key = newObject.someKey; // Access properties
+// 2. Square bracket syntax
+newObject['someKey'] = 'Hello World'; // Write properties
+var key = newObject['someKey']; // Access properties
+                </code></pre>
+            </section>
+            <section>
+                <h2>Objects</h2>
+                <p>Four common ways to create new properties of objects</p>
+                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// ECMAScript 5 only compatible approaches
+// For more information see: http://kangax.github.com/es5-compat-table/
+// 3. Object.defineProperty
+Object.defineProperty(newObject, "someKey", {
+value: "for more control of the property's behavior",
+writable: true,
+enumerable: true,
+configurable: true
+});
+// 4. Object.defineProperties
+Object.defineProperties(newObject, {
+"someKey": {
+value: "Hello World",
+writable: true
+},
+"anotherKey": {
+value: "Foo bar",
+writable: false
+}
+});
+                </code></pre>
+                <p>Refer <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties">defineProperties and defineProperty</a>.</p></p>
+            </section>
+            <section>
+                <h2>Objects</h2>
+                <p>Few common things to note:</p>
+                <ul>
+                    <li>Prototype
+                         <ul>
+                            <li>Delegation / Prototype Chain</li>
+                        </ul>
+                    </li>
+                    <li>Reflection
+                        <ul>
+                            <li>typeof</li>
+                            <li>hasOwnProperty</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </section>
     </div>
 </div>
 <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
 <script src="bower_components/reveal.js/js/reveal.min.js"></script>
 
 <script>
-    // Required, even if empty.
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
     });
 </script>
 </body>

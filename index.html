@@ -67,10 +67,10 @@
         <section>
             <h2>Introduction</h2>
             <ul>
-                <li>Language for programming interactive web pages,</li>
-                <li>ECMAScript</li>
-                <li>ES3 1999</li>
-                <li>ES5 2009</li>
+                <li class="fragment">Language for programming interactive web pages,</li>
+                <li class="fragment">ECMAScript</li>
+                <li class="fragment">ES3 1999</li>
+                <li class="fragment">ES5 2009</li>
             </ul>
             <aside class="notes">
                 JavaScript’s popularity led to its
@@ -90,14 +90,13 @@
             <section>
                 <h2>JavaScript Syntax</h2>
                 <ul>
-                    <li>Case sensitivity</li>
-                    <li>Whitespace</li>
-                    <li>Semicolons</li>
-                    <li>Comments</li>
-                    <li>Identifiers</li>
-                    <li>Keywords</li>
-                    <li>Variables</li>
-                    <li>Data Types
+                    <li class="fragment">Case sensitivity</li>
+                    <li class="fragment">Whitespace</li>
+                    <li class="fragment">Semicolons</li>
+                    <li class="fragment">Comments</li>
+                    <li class="fragment">Identifiers</li>
+                    <li class="fragment">Keywords</li>
+                    <li  class="fragment">Data Types
                         <ul>
                             <li>numbers</li>
                             <li>boolean</li>
@@ -106,17 +105,16 @@
                             <li>functions</li>
                         </ul>
                     </li>
-                    <li>undefined</li>
                 </ul>
             </section>
             <section>
                 <h2>JavaScript Syntax</h2>
                 <p>Special mention:</p>
                 <ul>
-                    <li>undefined, NaN and null</li>
-                    <li>"use strict";</li>
-                    <li>isNaN</li>
-                    <li>=== vs ==</li>
+                    <li class="fragment">undefined, NaN and null</li>
+                    <li class="fragment">"use strict";</li>
+                    <li class="fragment">isNaN</li>
+                    <li class="fragment">=== vs ==</li>
                 </ul>
                 <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 //Method 1
@@ -142,12 +140,12 @@ var arguments = []; // error: redefinition of arguments
             <section>
                 <h2>Objects</h2>
                 <ul>
-                    <li>Collection of property-value.</li>
-                    <li>A property name can be any string, including the empty string.</li>
-                    <li>Value can have any defined Datatype of Javascript including other objects.</li>
-                    <li>Objects in JavaScript are class-free.</li>
+                    <li class="fragment">Collection of property-value.</li>
+                    <li class="fragment">A property name can be any string, including the empty string.</li>
+                    <li class="fragment">Value can have any defined Datatype of Javascript including other objects.</li>
+                    <li class="fragment">Objects in JavaScript are class-free.</li>
                 </ul>
-                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+                <pre class="fragment"><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 var empty_object = {};
 var stooge = {
 "first-name": "Jerome",
@@ -229,15 +227,17 @@ writable: false
                 <ul>
                     <li>Encloses the set of statements</li>
                     <li>Functions are objects</li>
+                    <li>Functions Calling</li>
                 </ul>
             </section>
             <section>
                 <h2>Functions</h2>
                 <p>Scoping in Javascript</p>
                 <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-var foo = 1;
+var foo = 20;
 function bar() {
-    if (!foo) {
+    var foo = 30;
+    if (true) {
         var foo = 10;
     }
     alert(foo);
@@ -413,6 +413,9 @@ var Singleton = function()
                 <li>CSS Basics</li>
                 <li>Memory Leaks</li>
             </ul>
+        </section>
+        <section>
+            <h2>Thank You</h2>
         </section>
     </div>
 </div>

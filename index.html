@@ -234,6 +234,17 @@ writable: false
             <section>
                 <h2>Functions</h2>
                 <p>Scoping in Javascript</p>
+                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var foo = 1;
+function bar() {
+    if (!foo) {
+        var foo = 10;
+    }
+    alert(foo);
+}
+bar();
+                </code></pre>
+                <p>Function-level scope</p>
             </section>
             <section>
                 <h2>Functions</h2>
@@ -242,11 +253,99 @@ writable: false
             <section>
                 <h2>Functions</h2>
                 <p>Function Declaration vs Function Expression</p>
+                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+//Function Declaration
+function bar() {
+    return 3;
+}
+//anonymous function expression
+var a = function() {
+    return 3;
+}
+
+//named function expression
+var a = function bar() {
+    return 3;
+}
+
+//self invoking function expression
+(function sayHello() {
+    alert("hello!");
+})();
+                </code></pre>
             </section>
             <section>
                 <h2>Functions</h2>
                 <p>Hoisted</p>
+                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+//Question 1:
+function foo(){
+    function bar() {
+        return 3;
+    }
+    return bar();
+    function bar() {
+        return 8;
+    }
+}
+alert(foo());
+
+//Question 2:
+function foo(){
+    var bar = function() {
+        return 3;
+    };
+    return bar();
+    var bar = function() {
+        return 8;
+    };
+}
+alert(foo());
+
+//Question 3:
+alert(foo());
+function foo(){
+    var bar = function() {
+        return 3;
+    };
+    return bar();
+    var bar = function() {
+        return 8;
+    };
+}
+
+//Question 4:
+
+function foo(){
+    return bar();
+    var bar = function() {
+        return 3;
+    };
+    var bar = function() {
+        return 8;
+    };
+}
+alert(foo());
+                    </code></pre>
                 <p><a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">Refer</a></p>
+            </section>
+            <section>
+                <h2>Functions</h2>
+                <p>Closure</p>
+                <p><small>A closure—unlike a plain function pointer—enables a function to access those non-local variables even when invoked outside its immediate lexical scope.</small></p>
+                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function makeFunc() {
+    var name = "Mozilla";
+    function displayName() {
+        alert(name);
+    }
+    return displayName;
+}
+
+var myFunc = makeFunc();
+myFunc();
+                </code></pre>
+                <p><small>Create Calculator Like this Sum(5)(10) should return 10</small></p>
             </section>
         </section>
     </div>

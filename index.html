@@ -347,6 +347,72 @@ myFunc();
                 </code></pre>
                 <p><small>Create Calculator Like this Sum(5)(10) should return 10</small></p>
             </section>
+            <section>
+                <h2>Functions</h2>
+                <img src="http://i.stack.imgur.com/KFzI3.png">
+            </section>
+        </section>
+        <section>
+            <h2>JavaScript Object Creation</h2>
+            <ul>
+                <li>Prototype Pattern</li>
+                <li>Module Pattern</li>
+                <li>Closers Pattern</li>
+            </ul>
+        </section>
+        <section>
+            <section>
+                <h2>Singleton class</h2>
+                <p2><small>Lets use this knowledge and create a Singleton Object</small></p2>
+            </section>
+            <section>
+                <h2>Singleton class</h2>
+                <p>Method 1</p>
+                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var Singleton = function(){
+    if(Singleton.__instance) {
+        return Singleton.__instance;
+    }
+    Singleton.__instance = this;
+};
+                </code></pre>
+            </section>
+            <section>
+                <h2>Singleton class</h2>
+                <p>Method 2</p>
+                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var Singleton = function()
+{
+    // the cached instance
+    var instance;
+
+    // rewrite the constructor
+    Singleton = function() {
+    return instance;
+    };
+
+    // carry over the prototype
+    Singleton.prototype = this;
+
+    // the instance
+    instance = new Singleton();
+
+    // reset the constructor pointer
+    instance.constructor = Singleton;
+
+    return instance;
+};
+                </code></pre>
+            </section>
+        </section>
+        <section>
+            <h2>Future Sessions</h2>
+            <ul>
+                <li>OOPS Programming</li>
+                <li>Design Patterns</li>
+                <li>CSS Basics</li>
+                <li>Memory Leaks</li>
+            </ul>
         </section>
     </div>
 </div>

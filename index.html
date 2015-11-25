@@ -12,11 +12,29 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="icon" href="img/kapil.ico">
-    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
-    <link rel="stylesheet" href="bower_components/reveal.js/css/theme/default.css" id="theme">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="js/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="js/reveal.js/css/theme/moon.css" id="theme">
     <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="js/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="js/title-footer/title-footer.css">
+    <link rel="stylesheet" href="js/toc-progress/toc-progress.css">
 
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
@@ -30,11 +48,14 @@
     </script>
     <!--Add support for earlier versions of Internet Explorer -->
     <!--[if lt IE 9]>
-    <script src="bower_components/reveal.js/lib/js/html5shiv.js"></script>
+    <script src="js/reveal.js/lib/js/html5shiv.js"></script>
     <![endif]-->
 </head>
 
 <body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 <!-- Wrap the entire slide show in a div using the "reveal" class. -->
 <div class="reveal">
     <!-- Wrap all slides in a single "slides" class -->
@@ -108,7 +129,7 @@
                 </ul>
             </section>
             <section>
-                <h2>JavaScript Syntax</h2>
+                <h2>JavaScript Syntax Cont.</h2>
                 <p>Special mention:</p>
                 <ul>
                     <li class="fragment">undefined, NaN and null</li>
@@ -154,7 +175,7 @@ var stooge = {
                 </code></pre>
             </section>
             <section>
-                <h2>Objects</h2>
+                <h2>Create Objects</h2>
                 <p>Three common ways to create new objects</p>
                 <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 // Each of the following options will create a new empty object:
@@ -164,7 +185,7 @@ var newObject = new Object();
                 </code></pre>
             </section>
             <section>
-                <h2>Objects</h2>
+                <h2>Objects Properties</h2>
                 <p>Four common ways to create new properties of objects</p>
                 <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 // ECMAScript 3 compatible approaches
@@ -177,7 +198,7 @@ var key = newObject['someKey']; // Access properties
                 </code></pre>
             </section>
             <section>
-                <h2>Objects</h2>
+                <h2>Create Objects Properties</h2>
                 <p>Four common ways to create new properties of objects</p>
                 <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 // ECMAScript 5 only compatible approaches
@@ -204,7 +225,7 @@ writable: false
                 <p>Refer <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties">defineProperties and defineProperty</a>.</p></p>
             </section>
             <section>
-                <h2>Objects</h2>
+                <h2>Objects Cont.</h2>
                 <p>Few common things to note:</p>
                 <ul>
                     <li>Prototype
@@ -231,7 +252,7 @@ writable: false
                 </ul>
             </section>
             <section>
-                <h2>Functions</h2>
+                <h2>Functions Scope</h2>
                 <p>Scoping in Javascript</p>
                 <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 var foo = 20;
@@ -247,11 +268,11 @@ bar();
                 <p>Function-level scope</p>
             </section>
             <section>
-                <h2>Functions</h2>
+                <h2>Functions SIFE</h2>
                 <p>SIFE(Self Invoking Function Expression)</p>
             </section>
             <section>
-                <h2>Functions</h2>
+                <h2>Functions Dec vs Exp</h2>
                 <p>Function Declaration vs Function Expression</p>
                 <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 //Function Declaration
@@ -275,7 +296,7 @@ var a = function bar() {
                 </code></pre>
             </section>
             <section>
-                <h2>Functions</h2>
+                <h2>Functions Hoisting</h2>
                 <p>Hoisted</p>
                 <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 //Question 1:
@@ -330,7 +351,7 @@ alert(foo());
                 <p><a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">Refer</a></p>
             </section>
             <section>
-                <h2>Functions</h2>
+                <h2>Functions Cont.</h2>
                 <p>Closure</p>
                 <p><small>A closure—unlike a plain function pointer—enables a function to access those non-local variables even when invoked outside its immediate lexical scope.</small></p>
                 <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
@@ -348,8 +369,8 @@ myFunc();
                 <p><small>Create Calculator Like this Sum(5)(10) should return 10</small></p>
             </section>
             <section>
-                <h2>Functions</h2>
-                <img src="http://i.stack.imgur.com/KFzI3.png">
+                <h2>Functions Model</h2>
+                <img style="height: 475px;background-color: lightgrey" src="http://i.stack.imgur.com/KFzI3.png">
             </section>
         </section>
         <section>
@@ -366,7 +387,7 @@ myFunc();
                 <p2><small>Lets use this knowledge and create a Singleton Object</small></p2>
             </section>
             <section>
-                <h2>Singleton class</h2>
+                <h2>Singleton class Method 1</h2>
                 <p>Method 1</p>
                 <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 var Singleton = function(){
@@ -378,7 +399,7 @@ var Singleton = function(){
                 </code></pre>
             </section>
             <section>
-                <h2>Singleton class</h2>
+                <h2>Singleton class Method 2</h2>
                 <p>Method 2</p>
                 <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 var Singleton = function()
@@ -419,8 +440,8 @@ var Singleton = function()
         </section>
     </div>
 </div>
-<script src="bower_components/reveal.js/lib/js/head.min.js"></script>
-<script src="bower_components/reveal.js/js/reveal.min.js"></script>
+<script src="js/reveal.js/lib/js/head.min.js"></script>
+<script src="js/reveal.js/js/reveal.js"></script>
 
 <script>
     // Full list of configuration options available here:
@@ -429,22 +450,33 @@ var Singleton = function()
         controls: true,
         progress: true,
         history: true,
+        slideNumber: true,
         center: true,
-        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        transition: 'fade', // default/cube/page/concave/zoom/linear/fade/none
         // Parallax scrolling
         // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
         // parallaxBackgroundSize: '2100px 900px',
         // Optional libraries used to extend on reveal.js
         dependencies: [
-            { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-            { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-            { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-            { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            { src: 'js/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'js/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'js/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'js/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'js/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'js/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'js/title-footer/title-footer.js',async: true, callback: function() { title_footer.initialize(); } },
+            { src: 'js/toc-progress/toc-progress.js',async: true, callback: function() { toc_progress.initialize(); toc_progress.create(); } }
         ]
     });
+</script>
+
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-68034491-1','auto');ga('send','pageview');
 </script>
 </body>
 </html>

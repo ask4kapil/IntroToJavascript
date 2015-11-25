@@ -30,7 +30,7 @@
 
 div.progress[style="display: block;"] ~ #title-footer
 {
-	bottom: calc(3px + 10.5vh);
+	bottom: calc(3px + 13vh);
 }
 
 /* Bottom position for the Title-Footer footer when TOC-Progress is visible */

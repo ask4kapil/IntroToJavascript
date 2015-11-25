@@ -35,7 +35,7 @@ gulp.task('build', function(done) {
     if (!fs.existsSync(paths.dist)) {
         fs.mkdirSync(paths.dist);
     }
-    runSequence('pack','compress', 'minify-css', 'minify-html');
+    runSequence('pack','compress', 'minify-css', 'minify-html', 'deploy', 'clean');
 });
 var uglify = require('gulp-uglify');
 

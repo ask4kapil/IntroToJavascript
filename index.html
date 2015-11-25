@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="js/reveal.js/lib/css/zenburn.css">
     <link rel="stylesheet" href="js/title-footer/title-footer.css">
     <link rel="stylesheet" href="js/toc-progress/toc-progress.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
         if( window.location.search.match( /print-pdf/gi ) ) {
@@ -85,30 +85,32 @@
 
         </section>
 
-        <section>
-            <h2>Introduction</h2>
-            <ul>
-                <li class="fragment">Language for programming interactive web pages,</li>
-                <li class="fragment">ECMAScript</li>
-                <li class="fragment">ES3 1999</li>
-                <li class="fragment">ES5 2009</li>
-            </ul>
-            <aside class="notes">
-                JavaScript’s popularity led to its
-                formalization in 1997 as an international standard, known officially
-                as ECMAScript. Today there are many competing implementations of
-                JavaScript providing conformance to various versions of the ECMAScript
-                standard.
-                The third edition of the ECMAScript standard (commonly referred
-                to as ES3), which was finalized in 1999, continues to be the most
-                widely adopted version of Java Script. The next major advancement to
-                the standard was Edition 5, or ES5, which was released in 2009. ES5
-                introduced a number of new features as well as standardizing some
-                widely supported but previously unspecified features.
-            </aside>
-        </section>
+
         <section>
             <section>
+                <h2>Introduction</h2>
+                <ul>
+                    <li class="fragment">Language for programming interactive web pages,</li>
+                    <li class="fragment">ECMAScript</li>
+                    <li class="fragment">ES3 1999</li>
+                    <li class="fragment">ES5 2009</li>
+                </ul>
+                <aside class="notes">
+                    JavaScript’s popularity led to its
+                    formalization in 1997 as an international standard, known officially
+                    as ECMAScript. Today there are many competing implementations of
+                    JavaScript providing conformance to various versions of the ECMAScript
+                    standard.
+                    The third edition of the ECMAScript standard (commonly referred
+                    to as ES3), which was finalized in 1999, continues to be the most
+                    widely adopted version of Java Script. The next major advancement to
+                    the standard was Edition 5, or ES5, which was released in 2009. ES5
+                    introduced a number of new features as well as standardizing some
+                    widely supported but previously unspecified features.
+                </aside>
+            </section>
+            <section>
+
                 <h2>JavaScript Syntax</h2>
                 <ul>
                     <li class="fragment">Case sensitivity</li>
@@ -373,15 +375,16 @@ myFunc();
                 <img style="height: 475px;background-color: lightgrey" src="http://i.stack.imgur.com/KFzI3.png">
             </section>
         </section>
+
         <section>
-            <h2>JavaScript Object Creation</h2>
-            <ul>
-                <li>Prototype Pattern</li>
-                <li>Module Pattern</li>
-                <li>Closers Pattern</li>
-            </ul>
-        </section>
-        <section>
+            <section>
+                <h2>JavaScript Object Creation</h2>
+                <ul>
+                    <li>Prototype Pattern</li>
+                    <li>Module Pattern</li>
+                    <li>Closers Pattern</li>
+                </ul>
+            </section>
             <section>
                 <h2>Singleton class</h2>
                 <p2><small>Lets use this knowledge and create a Singleton Object</small></p2>
@@ -467,6 +470,15 @@ var Singleton = function()
             { src: 'js/title-footer/title-footer.js',async: true, callback: function() { title_footer.initialize(); } },
             { src: 'js/toc-progress/toc-progress.js',async: true, callback: function() { toc_progress.initialize(); toc_progress.create(); } }
         ]
+    });
+    $(document).ready(function () {
+        Reveal.addEventListener("slidechanged",function(event){
+            ga('send', 'pageview', {
+                'page': event.indexh,
+                'title': document.title + ' : Slide ' + event.indexh
+            });
+
+        });
     });
 </script>
 

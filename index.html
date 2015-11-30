@@ -78,7 +78,7 @@
             </p>
         </section>
 
-        <section id="show-a-link">
+        <section>
             <h2>Topics</h2>
             <ul>
                 <li>Introduction</li>
@@ -86,7 +86,7 @@
                 <li>Objects</li>
                 <li>Patterns</li>
             </ul>
-
+            <p><small>Press c from keyboard to open editor in any page.</small></p>
         </section>
 
 
@@ -292,6 +292,7 @@
             <h2>Future Sessions</h2>
             <ul>
                 <li>OOPS Programming</li>
+                <li>DOM Manipulation</li>
                 <li>Design Patterns</li>
                 <li>CSS Basics</li>
                 <li>Memory Leaks</li>
@@ -344,6 +345,9 @@
                     var iframe = document.createElement('iframe');
                     iframe.setAttribute('src', 'codemirror.html')
                     currentSlide.append(iframe);
+                }
+                else {
+                    currentSlide.find('iframe').remove()
                 }
             }
 

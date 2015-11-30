@@ -1,0 +1,6 @@
+console.time("Measure Array");
+    var array= new Array(1000000);
+    for (var i = array.length - 1; i &gt;= 0; i--) {
+        array[i] = new Object();
+    };
+console.timeEnd("Measure Array");

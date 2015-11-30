@@ -1,0 +1,8 @@
+var userName = "jomendez", authenticated = false;
+console.group("Authentication phase");
+console.log("Authenticating user '%s'", userName);
+// place your authentication code here...
+if (!authenticated) {
+  console.log("User '%s' is not authenticated.", userName)
+}
+console.groupEnd();

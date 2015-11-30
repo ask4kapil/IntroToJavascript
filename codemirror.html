@@ -235,12 +235,7 @@
                 loadFile(this.value);
             });
         }
-        document.addEventListener("keypress", function (event) {
-            var key = event.which || event.keyCode;
-            if (key === 63) {
-                enableSelectBox();
-            }
-        });
+        enableSelectBox();
     })( );
 </script>
 </body>

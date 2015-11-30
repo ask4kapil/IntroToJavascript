@@ -1,0 +1,4 @@
+//Error
+console.error("simple text"); //simple text
+//Dir
+console.dir(document.body);

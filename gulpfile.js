@@ -5,10 +5,11 @@ var paths = {
     dist: './dist',
     filesToCopy: [
         'img/**/*',
+        'code/**/*',
         'js/**/*.js',
         'js/reveal.js/lib/font/**/*',
         'js/**/*.css',
-        'index.html'
+        '*.html'
     ]
 };
 

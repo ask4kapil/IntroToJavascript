@@ -33,9 +33,14 @@
     <link rel="stylesheet" href="js/reveal.js/css/theme/moon.css" id="theme">
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="js/reveal.js/lib/css/zenburn.css">
-    <link rel="stylesheet" href="js/title-footer/title-footer.css">
-    <link rel="stylesheet" href="js/toc-progress/toc-progress.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style >
+        iframe {
+            width: 100% !important;
+            height: 400px !important;
+        }
+    </style>
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
         if( window.location.search.match( /print-pdf/gi ) ) {
@@ -46,6 +51,7 @@
             document.getElementsByTagName( 'head' )[0].appendChild( link );
         }
     </script>
+
     <!--Add support for earlier versions of Internet Explorer -->
     <!--[if lt IE 9]>
     <script src="js/reveal.js/lib/js/html5shiv.js"></script>
@@ -76,11 +82,9 @@
             <h2>Topics</h2>
             <ul>
                 <li>Introduction</li>
-                <li>Objects</li>
                 <li>Functions</li>
-                <li>Prototype</li>
-                <li>Closure</li>
-                <li>Closers</li>
+                <li>Objects</li>
+                <li>Patterns</li>
             </ul>
 
         </section>
@@ -119,111 +123,122 @@
                     <li class="fragment">Comments</li>
                     <li class="fragment">Identifiers</li>
                     <li class="fragment">Keywords</li>
-                    <li  class="fragment">Data Types
-                        <ul>
-                            <li>numbers</li>
-                            <li>boolean</li>
-                            <li>string</li>
-                            <li>object</li>
-                            <li>functions</li>
-                        </ul>
-                    </li>
                 </ul>
+            </section>
+            <section>
+                <h2>JavaScript Data Types</h2>
+                <ul>
+                    <li>null</li>
+                    <li>undefined</li>
+                    <li>boolean</li>
+                    <li>numbers</li>
+                    <li>string</li>
+                    <li>object</li>
+                    <li>symbol -- added in ES6!</li>
+                </ul>
+            </section>
+            <section>
+                <h2>JavaScript Data Types</h2>
+                <p>typeof: operator inspects the type of the given value</p>
+                <iframe data-media="typeof" src="codemirror.html"></iframe>
             </section>
             <section>
                 <h2>JavaScript Syntax Cont.</h2>
                 <p>Special mention:</p>
-                <ul>
-                    <li class="fragment">undefined, NaN and null</li>
-                    <li class="fragment">"use strict";</li>
-                    <li class="fragment">isNaN</li>
-                    <li class="fragment">=== vs ==</li>
+                <ul class="fragment">
+                    <li >"use strict";</li>
                 </ul>
-                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-//Method 1
-function f(x) {
-"use strict";
-var arguments = []; // error: redefinition of arguments
-// ...
-}
-//Method 2
-"use strict";
-function f1(x) {
-var arguments = [];
-// ...
-}
-function f2(x) {
-var arguments = []; // error: redefinition of arguments
-// ...
-}
-                </code></pre>
+                <iframe class="fragment" data-media="usestrict" src="codemirror.html"></iframe>
+            </section>
+            <section>
+                <h2>JavaScript Syntax Cont.</h2>
+                <p>Special mention:</p>
+                <ul class="fragment">
+                    <li >undefined, NaN and null</li>
+                    <li>isNaN</li>
+                    <li>=== vs ==</li>
+                </ul>
+                <iframe class="fragment" data-media="undefinednannull" src="codemirror.html"></iframe>
+            </section>
+            <section>
+                <h2>Value vs. Reference</h2>
+
+                <iframe class="valueref" data-media="undefinednannull" src="codemirror.html"></iframe>
+            </section>
+
+        </section>
+        <section>
+            <section>
+                <h2>Functions</h2>
+                <ul>
+                    <li>Encloses the set of statements</li>
+                    <li>Functions are objects</li>
+                    <li>Functions Calling</li>
+                </ul>
+                <iframe class="functions" data-media="function" src="codemirror.html"></iframe>
+            </section>
+            <section>
+                <h2>Ways of Calling Functions</h2>
+                <ul>
+                    <li>()</li>
+                    <li>.call()</li>
+                    <li>.apply()</li>
+                </ul>
+                <iframe data-media="functioncalling" src="codemirror.html"></iframe>
+            </section>
+            <section>
+                <h2>Scope os function</h2>
+                <p>Scoping in Javascript</p>
+                <iframe data-media="functionscope" src="codemirror.html"></iframe>
+                <p>Function-level scope</p>
+            </section>
+            <section>
+                <h2>Functions Dec vs Exp</h2>
+                <p>Function Declaration vs Function Expression</p>
+                <iframe data-media="function" src="codemirror.html"></iframe>
+            </section>
+
+            <section>
+                <h2>Functions SIFE</h2>
+                <p>SIFE(Self Invoking Function Expression)</p>
+                <p><small>A self-invoking anonymous runs automatically/immediately when you create it and has no name, hence called anonymous</small></p>
+                <iframe data-media="sife" src="codemirror.html"></iframe>
+            </section>
+
+            <section>
+                <h2>Functions Hoisting</h2>
+                <p>Hoisted</p>
+                <iframe data-media="hoisting" src="codemirror.html"></iframe>
+                <p><a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">Refer</a></p>
+            </section>
+            <section>
+                <h2>Functions Cont.</h2>
+                <p>Closures</p>
+                <p><small>A closure—unlike a plain function pointer—enables a function to access those non-local variables even when invoked outside its immediate lexical scope.</small></p>
+                <iframe data-media="closure" src="codemirror.html"></iframe>
+                <p><small>Create Calculator Like this Sum(5)(10) should return 10</small></p>
             </section>
         </section>
         <section>
             <section>
                 <h2>Objects</h2>
-                <ul>
-                    <li class="fragment">Collection of property-value.</li>
-                    <li class="fragment">A property name can be any string, including the empty string.</li>
-                    <li class="fragment">Value can have any defined Datatype of Javascript including other objects.</li>
-                    <li class="fragment">Objects in JavaScript are class-free.</li>
+                <ul class="fragment">
+                    <li>Collection of property-value.</li>
+                    <li>A property name can be any string, including the empty string.</li>
+                    <li>Value can have any defined Datatype of Javascript including other objects.</li>
+                    <li>Objects in JavaScript are class-free.</li>
                 </ul>
-                <pre class="fragment"><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-var empty_object = {};
-var stooge = {
-"first-name": "Jerome",
-"last-name": "Howard"
-};
-                </code></pre>
+
             </section>
             <section>
                 <h2>Create Objects</h2>
                 <p>Three common ways to create new objects</p>
-                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-// Each of the following options will create a new empty object:
-var newObject = {}; // or
-var newObject = Object.create(null); // or
-var newObject = new Object();
-                </code></pre>
+                <iframe class="fragment" data-media="objectcre" src="codemirror.html"></iframe>
             </section>
             <section>
                 <h2>Objects Properties</h2>
                 <p>Four common ways to create new properties of objects</p>
-                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-// ECMAScript 3 compatible approaches
-// 1. Dot syntax
-newObject.someKey = 'Hello World'; // Write properties
-var key = newObject.someKey; // Access properties
-// 2. Square bracket syntax
-newObject['someKey'] = 'Hello World'; // Write properties
-var key = newObject['someKey']; // Access properties
-                </code></pre>
-            </section>
-            <section>
-                <h2>Create Objects Properties</h2>
-                <p>Four common ways to create new properties of objects</p>
-                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-// ECMAScript 5 only compatible approaches
-// For more information see: http://kangax.github.com/es5-compat-table/
-// 3. Object.defineProperty
-Object.defineProperty(newObject, "someKey", {
-value: "for more control of the property's behavior",
-writable: true,
-enumerable: true,
-configurable: true
-});
-// 4. Object.defineProperties
-Object.defineProperties(newObject, {
-"someKey": {
-value: "Hello World",
-writable: true
-},
-"anotherKey": {
-value: "Foo bar",
-writable: false
-}
-});
-                </code></pre>
+                <iframe class="fragment" data-media="objectprop" src="codemirror.html"></iframe>
                 <p>Refer <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties">defineProperties and defineProperty</a>.</p></p>
             </section>
             <section>
@@ -231,7 +246,7 @@ writable: false
                 <p>Few common things to note:</p>
                 <ul>
                     <li>Prototype
-                         <ul>
+                        <ul>
                             <li>Delegation / Prototype Chain</li>
                         </ul>
                     </li>
@@ -243,143 +258,16 @@ writable: false
                     </li>
                 </ul>
             </section>
-        </section>
-        <section>
             <section>
-                <h2>Functions</h2>
-                <ul>
-                    <li>Encloses the set of statements</li>
-                    <li>Functions are objects</li>
-                    <li>Functions Calling</li>
-                </ul>
-            </section>
-            <section>
-                <h2>Functions Scope</h2>
-                <p>Scoping in Javascript</p>
-                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-var foo = 20;
-function bar() {
-    var foo = 30;
-    if (true) {
-        var foo = 10;
-    }
-    alert(foo);
-}
-bar();
-                </code></pre>
-                <p>Function-level scope</p>
-            </section>
-            <section>
-                <h2>Functions SIFE</h2>
-                <p>SIFE(Self Invoking Function Expression)</p>
-            </section>
-            <section>
-                <h2>Functions Dec vs Exp</h2>
-                <p>Function Declaration vs Function Expression</p>
-                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-//Function Declaration
-function bar() {
-    return 3;
-}
-//anonymous function expression
-var a = function() {
-    return 3;
-}
-
-//named function expression
-var a = function bar() {
-    return 3;
-}
-
-//self invoking function expression
-(function sayHello() {
-    alert("hello!");
-})();
-                </code></pre>
-            </section>
-            <section>
-                <h2>Functions Hoisting</h2>
-                <p>Hoisted</p>
-                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-//Question 1:
-function foo(){
-    function bar() {
-        return 3;
-    }
-    return bar();
-    function bar() {
-        return 8;
-    }
-}
-alert(foo());
-
-//Question 2:
-function foo(){
-    var bar = function() {
-        return 3;
-    };
-    return bar();
-    var bar = function() {
-        return 8;
-    };
-}
-alert(foo());
-
-//Question 3:
-alert(foo());
-function foo(){
-    var bar = function() {
-        return 3;
-    };
-    return bar();
-    var bar = function() {
-        return 8;
-    };
-}
-
-//Question 4:
-
-function foo(){
-    return bar();
-    var bar = function() {
-        return 3;
-    };
-    var bar = function() {
-        return 8;
-    };
-}
-alert(foo());
-                    </code></pre>
-                <p><a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">Refer</a></p>
-            </section>
-            <section>
-                <h2>Functions Cont.</h2>
-                <p>Closure</p>
-                <p><small>A closure—unlike a plain function pointer—enables a function to access those non-local variables even when invoked outside its immediate lexical scope.</small></p>
-                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-function makeFunc() {
-    var name = "Mozilla";
-    function displayName() {
-        alert(name);
-    }
-    return displayName;
-}
-
-var myFunc = makeFunc();
-myFunc();
-                </code></pre>
-                <p><small>Create Calculator Like this Sum(5)(10) should return 10</small></p>
-            </section>
-            <section>
-                <h2>Functions Model</h2>
+                <h2>Object Functions Model</h2>
                 <img style="height: 475px;background-color: lightgrey" src="http://i.stack.imgur.com/KFzI3.png">
             </section>
         </section>
-
         <section>
             <section>
                 <h2>JavaScript Object Creation</h2>
                 <ul>
+                    <li>Basic</li>
                     <li>Prototype Pattern</li>
                     <li>Module Pattern</li>
                     <li>Closers Pattern</li>
@@ -392,41 +280,12 @@ myFunc();
             <section>
                 <h2>Singleton class Method 1</h2>
                 <p>Method 1</p>
-                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-var Singleton = function(){
-    if(Singleton.__instance) {
-        return Singleton.__instance;
-    }
-    Singleton.__instance = this;
-};
-                </code></pre>
+                <iframe data-media="singleton1" src="codemirror.html"></iframe>
             </section>
             <section>
                 <h2>Singleton class Method 2</h2>
                 <p>Method 2</p>
-                <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-var Singleton = function()
-{
-    // the cached instance
-    var instance;
-
-    // rewrite the constructor
-    Singleton = function() {
-    return instance;
-    };
-
-    // carry over the prototype
-    Singleton.prototype = this;
-
-    // the instance
-    instance = new Singleton();
-
-    // reset the constructor pointer
-    instance.constructor = Singleton;
-
-    return instance;
-};
-                </code></pre>
+                <iframe data-media="singleton2" src="codemirror.html"></iframe>
             </section>
         </section>
         <section>
@@ -445,6 +304,7 @@ var Singleton = function()
 </div>
 <script src="js/reveal.js/lib/js/head.min.js"></script>
 <script src="js/reveal.js/js/reveal.js"></script>
+
 
 <script>
     // Full list of configuration options available here:
@@ -466,9 +326,7 @@ var Singleton = function()
             { src: 'js/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
             { src: 'js/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
             { src: 'js/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-            { src: 'js/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-            { src: 'js/title-footer/title-footer.js',async: true, callback: function() { title_footer.initialize(); } },
-            { src: 'js/toc-progress/toc-progress.js',async: true, callback: function() { toc_progress.initialize(); toc_progress.create(); } }
+            { src: 'js/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
     });
     $(document).ready(function () {
@@ -477,9 +335,21 @@ var Singleton = function()
                 'page': event.indexh,
                 'title': document.title + ' : Slide ' + event.indexh
             });
+        });
+        document.addEventListener("keypress", function (event) {
+            var key = event.which || event.keyCode;
+            if (key === 99) { // 13 is enter
+                var currentSlide = $(Reveal.getCurrentSlide());
+                if(currentSlide.find('iframe').length === 0) {
+                    var iframe = document.createElement('iframe');
+                    iframe.setAttribute('src', 'codemirror.html')
+                    currentSlide.append(iframe);
+                }
+            }
 
         });
     });
+
 </script>
 
 <script>

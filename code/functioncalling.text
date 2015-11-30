@@ -1,0 +1,19 @@
+//Example 1
+var a = 10;
+function printA (a) {
+    console.log(a);
+}
+
+printA(a);
+printA.call(this,a);
+printA.apply(this,[a]);
+
+//Example 2
+var a = 10;
+function printA () {
+    console.log(a);
+}
+
+printA(a);
+printA.call({a: 20},a);
+printA.apply({a: 20},[a]);

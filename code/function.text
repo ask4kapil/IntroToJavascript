@@ -1,0 +1,18 @@
+//Function Declaration
+function bar() {
+    return 3;
+}
+//anonymous function expression
+var a = function() {
+    return 3;
+}
+
+//named function expression
+var a = function bar() {
+    return 3;
+}
+
+//self invoking function expression
+(function sayHello() {
+    alert("hello!");
+})();

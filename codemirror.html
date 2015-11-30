@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="js/title-footer/title-footer.css">
+    <link rel="stylesheet" href="js/toc-progress/toc-progress.css">
+    <link rel="stylesheet" href="js/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="js/codemirror/addon/hint/show-hint.css">
+    <style type="text/css">
+        .CodeMirror {
+            border-width:1px;
+            border-style: solid;
+            border-color:#DBDFE6;
+        }
+        .CodeMirror-foldmarker {
+            color: blue;
+            text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px, #b9f -1px 1px 2px;
+            line-height: .3;
+            cursor: pointer;
+        }
+        .tabs input[type=radio] {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        .tabs {
+            float: none;
+            list-style: none;
+            position: relative;
+            padding: 0;
+        }
+        .tabs li {
+            float: left;
+        }
+        .tabs label {
+            display: block;
+            padding: 10px 20px;
+            border-radius: 2px 2px 0 0;
+            color: #EEE8D5;
+            font-size: 24px;
+            font-weight: normal;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            position: relative;
+            top: 3px;
+            -webkit-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+        .tabs label:hover {
+            background: rgba(255, 255, 255, 0.5);
+            top: 0;
+        }
+        [id^=tab]:checked + label {
+            background: #1B6CA5;
+            color: #EEE8D5;
+            top: 0;
+        }
+        [id^=tab]:checked ~[id^=tab-content] {
+            display: block;
+        }
+        .tab-content {
+            z-index: 2;
+            display: none;
+            text-align: left;
+            width: 100%;
+            font-size: 20px;
+            line-height: 140%;
+            padding-top: 10px;
+            background: #1B6CA5;
+            padding: 15px;
+            color: white;
+            position: absolute;
+            top: 47px;
+            left: 0;
+            box-sizing: border-box;
+            -webkit-animation-duration: 0.5s;
+            -o-animation-duration: 0.5s;
+            -moz-animation-duration: 0.5s;
+            animation-duration: 0.5s;
+        }
+        .tab-content .button {
+            position: absolute;
+            top: 20px;
+            z-index: 10;
+            right: 20px;
+            background-color:#44c767;
+            -moz-border-radius:28px;
+            -webkit-border-radius:28px;
+            border-radius:28px;
+            border:1px solid #18ab29;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Arial;
+            font-size:17px;
+            padding:6px 31px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #2f6627;
+        }
+        .tab-content .button:hover {
+            background-color:#5cbf2a;
+        }
+        .tab-content .button:active {
+            top:21px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<ul class="tabs">
+    <li>
+        <input type="radio" checked name="tabs" id="tab1">
+        <label for="tab1">Code</label>
+        <div id="tab-content1" class="tab-content animated fadeIn">
+            <textarea id="code">
+            </textarea>
+        </div>
+    </li>
+    <li>
+        <input type="radio" name="tabs" id="tab2">
+        <label for="tab2">Output</label>
+        <div id="tab-content3" class="tab-content animated fadeIn"> <span class="button" onclick="runCode();"> Run </span>
+
+            <textarea id="output" disabled></textarea>
+        </div>
+    </li>
+</ul>
+<script src="js/codemirror/lib/codemirror.js"></script>
+<script src="js/codemirror/addon/hint/show-hint.js"></script>
+<script src="js/codemirror/addon/hint/javascript-hint.js"></script>
+<script src="js/codemirror/mode/javascript/javascript.js"></script>
+
+<script>
+
+    (function(){
+        'use strict';
+        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            continueComments: "Enter",
+            mode: {
+                name: "javascript",
+                globalVars: true
+            },
+            gutters: ["CodeMirror-lint-markers"],
+            lint: true,
+            extraKeys: {
+                "Ctrl-Q": "toggleComment",
+                "Ctrl-Space": "autocomplete"
+            }
+        });
+        var media = window.frameElement.getAttribute("data-media");
+        if(media !== null) {
+            $.ajax({
+                url: "code/" + window.frameElement.getAttribute("data-media") + ".text",
+                dataType: "text",
+                success: function (data) {
+                    editor.setValue(data)
+                }
+            });
+        }
+        var console = (function (oldCons) {
+            return {
+                log: function (text) {
+                    oldCons.log(text);
+                    output.setValue(output.getValue() + text + '\n');
+                },
+                info: function (text) {
+                    oldCons.info(text);
+                    output.setValue(output.getValue() + text + '\n');
+                },
+                warn: function (text) {
+                    oldCons.warn(text);
+                    output.setValue(output.getValue() + text + '\n');
+                },
+                error: function (text) {
+                    oldCons.error(text);
+                    output.setValue(output.getValue() + text + '\n');
+                }
+            };
+        }(window.console));
+
+        //Then redefine the old console
+        window.console = console;
+
+        window.runCode = function () {
+            (function () {
+                output.setValue('');
+                try {
+
+
+                    eval(editor.getValue())
+                } catch (e) {
+                    if (e) {
+                        output.setValue(e.stack);
+                    }
+                }
+
+            })()
+        };
+        window.output = CodeMirror.fromTextArea(document.getElementById("output"), {
+        readOnly: true
+    });
+
+
+    })( );
+</script>
+</body>
+</html>

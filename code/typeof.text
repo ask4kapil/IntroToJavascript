@@ -1,0 +1,7 @@
+console.log("typeof null is " + typeof null);
+console.log("typeof undefined is " + typeof undefined);
+console.log("typeof true is " + typeof true);
+console.log("typeof 12 is " + typeof 12);
+console.log("typeof \"22\" is " + typeof "22");
+console.log("typeof {life: 32} is " + typeof {life: 32});
+console.log("typeof Symbol() is " + typeof Symbol());

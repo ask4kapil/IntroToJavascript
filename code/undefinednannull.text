@@ -1,0 +1,58 @@
+console.log("Block undefined")
+var a = undefined;
+if( a === a)
+  console.log("a === a");
+if( a === undefined)
+  console.log("a === undefined");
+if( a == undefined)
+  console.log("a == undefined");
+console.log("undefined + 1 = " + (undefined + 1));
+if( a )
+  console.log("a is positive");
+if( !a )
+  console.log("a is negative");
+if( a == false)
+  console.log("a == false");
+if( a === false)
+  console.log("a === false");
+
+console.log("");
+console.log("");
+console.log("null undefined")
+var a = null;
+if( a === a)
+  console.log("a === a");
+if( a === null)
+  console.log("a === null");
+if( a == null)
+  console.log("a == null");
+console.log("null + 1 = " + (null + 1));
+if( a )
+  console.log("a is positive");
+if( !a )
+  console.log("a is negative");
+if( a == false)
+  console.log("a == false");
+if( a === false)
+  console.log("a === false");
+console.log("");
+console.log("");
+console.log("Block NaN");
+var a = NaN;
+if( a === a)
+  console.log("a === a");
+if( a === NaN)
+  console.log("a === NaN");
+if( a == NaN)
+  console.log("a == NaN");
+console.log("NaN + 1 = " + (NaN + 1));
+if( isNaN(a))
+  console.log("isNaN(a)");
+if( a )
+  console.log("a is positive");
+if( !a )
+  console.log("a is negative");
+if( a == false)
+  console.log("a == false");
+if( a === false)
+  console.log("a === false");

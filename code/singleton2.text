@@ -1,0 +1,21 @@
+var Singleton = function()
+{
+    // the cached instance
+    var instance;
+
+    // rewrite the constructor
+    Singleton = function() {
+    return instance;
+    };
+
+    // carry over the prototype
+    Singleton.prototype = this;
+
+    // the instance
+    instance = new Singleton();
+
+    // reset the constructor pointer
+    instance.constructor = Singleton;
+
+    return instance;
+};

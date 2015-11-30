@@ -11,6 +11,9 @@
             border-style: solid;
             border-color:#DBDFE6;
         }
+        .fixed-top .CodeMirror {
+            height: 500px;
+        }
         .CodeMirror-foldmarker {
             color: blue;
             text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px, #b9f -1px 1px 2px;
@@ -104,6 +107,14 @@
         .tab-content .button:active {
             top:21px;
         }
+        .select {
+            float: right !important;
+        }
+        .select select {
+            width: 200px;
+            height: 30px;
+            margin-top: 10px;
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
@@ -125,6 +136,9 @@
             <textarea id="output" disabled></textarea>
         </div>
     </li>
+    <li class="select">
+        <select id="select-box"></select>
+    </li>
 </ul>
 <script src="js/codemirror/lib/codemirror.js"></script>
 <script src="js/codemirror/addon/hint/show-hint.js"></script>
@@ -132,7 +146,6 @@
 <script src="js/codemirror/mode/javascript/javascript.js"></script>
 
 <script>
-
     (function(){
         'use strict';
         var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
@@ -150,10 +163,17 @@
                 "Ctrl-Space": "autocomplete"
             }
         });
-        var media = window.frameElement.getAttribute("data-media");
+        var media = window.frameElement? window.frameElement.getAttribute("data-media"): null;
         if(media !== null) {
+            loadFile("code/" + window.frameElement.getAttribute("data-media") + ".text")
+        }
+        var classList = window.frameElement? window.frameElement.classList: null;
+        if(classList !== null && classList.length !== 0){
+            document.body.classList.add(classList[0]);
+        }
+        function loadFile(filename) {
             $.ajax({
-                url: "code/" + window.frameElement.getAttribute("data-media") + ".text",
+                url: filename + '?' + (new Date()).getTime(),
                 dataType: "text",
                 success: function (data) {
                     editor.setValue(data)
@@ -188,8 +208,6 @@
             (function () {
                 output.setValue('');
                 try {
-
-
                     eval(editor.getValue())
                 } catch (e) {
                     if (e) {
@@ -200,10 +218,29 @@
             })()
         };
         window.output = CodeMirror.fromTextArea(document.getElementById("output"), {
-        readOnly: true
-    });
-
-
+            readOnly: true
+        });
+        var select = $('#select-box');
+        select.toggle();
+        function enableSelectBox(){
+            $.get('codelist.json',function(data){
+                var list = data;
+                select[0].add(new Option('', ''));
+                for(var i=0; i < list.length; i++) {
+                    select[0].add(new Option(list[i], list[i]));
+                }
+            });
+            select.toggle();
+            select.on('change', function() {
+                loadFile(this.value);
+            });
+        }
+        document.addEventListener("keypress", function (event) {
+            var key = event.which || event.keyCode;
+            if (key === 63) {
+                enableSelectBox();
+            }
+        });
     })( );
 </script>
 </body>

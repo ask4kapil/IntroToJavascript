@@ -4,3 +4,8 @@ var Singleton = function(){
     }
     Singleton.__instance = this;
 };
+
+var obj1 = new Singleton();
+var obj2 = new Singleton();
+if(obj1 === obj2)
+  console.log("true Singleton");

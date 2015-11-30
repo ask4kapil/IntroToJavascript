@@ -1,0 +1,14 @@
+//Solution
+var baz = (function(){
+  var foo = 'Hello';
+  var bar = 'World!'
+
+  return function(){
+      return foo + ' ' + bar;
+  }
+})();
+
+ //These all throw exceptions if you try to access:
+console.log(typeof foo === 'undefined');
+console.log(typeof bar === 'undefined');
+console.log(baz());

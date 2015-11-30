@@ -40,6 +40,16 @@
             width: 100% !important;
             height: 400px !important;
         }
+        .fixed-top {
+            position: fixed;
+            top: -100px;
+            left: 0px;
+            background-color: #002B36;
+            width: 100% !important;
+            height: 600px !important;
+            max-width: 100% !important;
+            max-height: 800px !important;
+        }
     </style>
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
@@ -162,7 +172,6 @@
             </section>
             <section>
                 <h2>Value vs. Reference</h2>
-
                 <iframe class="valueref" data-media="undefinednannull" src="codemirror.html"></iframe>
             </section>
 
@@ -209,7 +218,7 @@
                 <h2>Functions Hoisting</h2>
                 <p>Hoisted</p>
                 <iframe data-media="hoisting" src="codemirror.html"></iframe>
-                <p><a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">Refer</a></p>
+                <p><a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html" target="_blank">Refer</a></p>
             </section>
             <section>
                 <h2>Functions Cont.</h2>
@@ -270,7 +279,7 @@
                     <li>Basic</li>
                     <li>Prototype Pattern</li>
                     <li>Module Pattern</li>
-                    <li>Closers Pattern</li>
+                    <li>Closures Pattern</li>
                 </ul>
             </section>
             <section>
@@ -339,11 +348,12 @@
         });
         document.addEventListener("keypress", function (event) {
             var key = event.which || event.keyCode;
-            if (key === 99) { // 13 is enter
+            if (key === 99) {
                 var currentSlide = $(Reveal.getCurrentSlide());
                 if(currentSlide.find('iframe').length === 0) {
                     var iframe = document.createElement('iframe');
-                    iframe.setAttribute('src', 'codemirror.html')
+                    iframe.classList.add('fixed-top');
+                    iframe.setAttribute('src', 'codemirror.html');
                     currentSlide.append(iframe);
                 }
                 else {

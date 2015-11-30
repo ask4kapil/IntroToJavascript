@@ -1,0 +1,36 @@
+var myModule = (function () {
+	//Private Variables and methods
+	var myProperty = 'someValue';
+	// object literals can contain properties and methods.
+	// here, another object is defined for configuration
+	// purposes:
+	var myConfig = {
+		useCaching : true,
+		language : 'en'
+	};
+	// a very basic method
+	var myMethodPr = function () {
+		console.log('I can haz functionality?');
+	};
+	return {
+		//Public Method
+		myMethodPub : myMethodPr,
+		// output a value based on current configuration
+		myMethod2 : function () {
+			console.log('Caching is:' + (myConfig.useCaching) ? 'enabled' : 'disabled');
+		},
+		// override the current configuration
+		myMethod3 : function (newConfig) {
+			if (typeof newConfig == 'object') {
+				myConfig = newConfig;
+				console.log(myConfig.language);
+			}
+		}
+	}
+})();
+myModule.myMethodPub(); // I can haz functionality
+myModule.myMethod2(); // outputs enabled
+myModule.myMethod3({
+	language : 'fr',
+	useCaching : false
+}); // fr

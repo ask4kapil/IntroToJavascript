@@ -9,6 +9,7 @@ var paths = {
         'js/**/*.js',
         'js/reveal.js/lib/font/**/*',
         'js/**/*.css',
+        'codelist.json',
         '*.html'
     ]
 };
@@ -21,6 +22,13 @@ var runSequence = require('run-sequence');
 var argv = require('yargs').argv;
 
 gulp.task('default', ['build']);
+
+gulp.task('list', function() {
+    gulp
+    .src('code/**/*')
+    .pipe(require('gulp-filelist')('codelist.json'))
+    .pipe(gulp.dest('.'));
+});
 
 gulp.task('pack', function(done) {
     if (!fs.existsSync(paths.dist)) {
@@ -36,7 +44,7 @@ gulp.task('build', function(done) {
     if (!fs.existsSync(paths.dist)) {
         fs.mkdirSync(paths.dist);
     }
-    runSequence('pack','compress', 'minify-css', 'minify-html', 'deploy', 'clean');
+    runSequence('pack','compress', 'minify-css', 'minify-html', 'list', 'deploy', 'clean');
 });
 var uglify = require('gulp-uglify');
 

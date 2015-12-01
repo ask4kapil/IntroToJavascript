@@ -6,9 +6,13 @@ var paths = {
     filesToCopy: [
         'img/**/*',
         'code/**/*',
-        'js/**/*.js',
-        'js/reveal.js/lib/font/**/*',
-        'js/**/*.css',
+        'js/codemirror/lib/codemirror.js',
+        'js/codemirror/addon/hint/show-hint.js',
+        'js/codemirror/addon/hint/javascript-hint.js',
+        'js/codemirror/mode/javascript/javascript.js',
+        'js/codemirror/lib/codemirror.css',
+        'js/codemirror/addon/hint/show-hint.css',
+        'js/reveal.js/**/*',
         'codelist.json',
         '*.html'
     ]

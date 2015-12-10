@@ -180,8 +180,8 @@
         }
         var console = (function (oldCons) {
             return {
-                log: function (text) {
-                    oldCons.log(text);
+                log: function () {
+                    oldCons.log.apply(this, arguments);
                     output.setValue(output.getValue() + text + '\n');
                 },
                 info: function (text) {
@@ -223,7 +223,7 @@
         function enableSelectBox(){
             $.get('codelist.json',function(data){
                 var list = data;
-                select[0].add(new Option('', ''));
+                select[0].add(new Option('Select', ''));
                 for(var i=0; i < list.length; i++) {
                     select[0].add(new Option(list[i], list[i]));
                 }

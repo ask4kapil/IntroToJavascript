@@ -36,6 +36,29 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <style >
+        .past iframe, .future iframe {
+            display: none;;
+        }
+        .columns {
+            -webkit-column-count: 4;
+            -moz-column-count: 4;
+            -ms-column-count: 4;
+            -o-column-count: 4;
+            column-count: 4;
+            font-size: 80% !important;
+            list-style: none !important;
+        }
+        .columns2 {
+            -webkit-column-count: 2;
+            -moz-column-count: 2;
+            -ms-column-count: 2;
+            -o-column-count: 2;
+            column-count: 2;
+            display: block !important;
+            font-size: 80% !important;
+            list-style: none !important;
+        }
+
         iframe {
             width: 100% !important;
             height: 400px !important;
@@ -49,6 +72,13 @@
             height: 600px !important;
             max-width: 100% !important;
             max-height: 800px !important;
+        }
+        .open-frame {
+            cursor: pointer;
+            color: #D8971B;
+        }
+        .reveal .slide-background.present {
+            background-size: contain;
         }
     </style>
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -151,7 +181,7 @@
             <section>
                 <h2>JavaScript Data Types</h2>
                 <p>typeof: operator inspects the type of the given value</p>
-                <iframe data-media="typeof" src="codemirror.html"></iframe>
+                <rframe data-media="typeof" src="codemirror.html"></rframe>
             </section>
             <section>
                 <h2>JavaScript Syntax Cont.</h2>
@@ -159,7 +189,7 @@
                 <ul class="fragment">
                     <li >"use strict";</li>
                 </ul>
-                <iframe class="fragment" data-media="usestrict" src="codemirror.html"></iframe>
+                <rframe class="fragment" data-media="usestrict" src="codemirror.html"></rframe>
             </section>
             <section>
                 <h2>JavaScript Syntax Cont.</h2>
@@ -169,11 +199,11 @@
                     <li>isNaN</li>
                     <li>=== vs ==</li>
                 </ul>
-                <iframe class="fragment" data-media="undefinednannull" src="codemirror.html"></iframe>
+                <rframe class="fragment" data-media="undefinednannull" src="codemirror.html"></rframe>
             </section>
             <section>
                 <h2>Value vs. Reference</h2>
-                <iframe class="valueref" data-media="undefinednannull" src="codemirror.html"></iframe>
+                <rframe class="valueref" data-media="undefinednannull" src="codemirror.html"></rframe>
             </section>
 
         </section>
@@ -185,7 +215,7 @@
                     <li>Functions are objects</li>
                     <li>Functions Calling</li>
                 </ul>
-                <iframe class="functions" data-media="function" src="codemirror.html"></iframe>
+                <rframe class="functions" data-media="function" src="codemirror.html"></rframe>
             </section>
             <section>
                 <h2>Ways of Calling Functions</h2>
@@ -194,38 +224,38 @@
                     <li>.call()</li>
                     <li>.apply()</li>
                 </ul>
-                <iframe data-media="functioncalling" src="codemirror.html"></iframe>
+                <rframe data-media="functioncalling" src="codemirror.html"></rframe>
             </section>
             <section>
                 <h2>Scope os function</h2>
                 <p>Scoping in Javascript</p>
-                <iframe data-media="functionscope" src="codemirror.html"></iframe>
+                <rframe data-media="functionscope" src="codemirror.html"></rframe>
                 <p>Function-level scope</p>
             </section>
             <section>
                 <h2>Functions Dec vs Exp</h2>
                 <p>Function Declaration vs Function Expression</p>
-                <iframe data-media="function" src="codemirror.html"></iframe>
+                <rframe data-media="function" src="codemirror.html"></rframe>
             </section>
 
             <section>
                 <h2>Functions SIFE</h2>
                 <p>SIFE(Self Invoking Function Expression)</p>
                 <p><small>A self-invoking anonymous runs automatically/immediately when you create it and has no name, hence called anonymous</small></p>
-                <iframe data-media="sife" src="codemirror.html"></iframe>
+                <rframe data-media="sife" src="codemirror.html"></rframe>
             </section>
 
             <section>
                 <h2>Functions Hoisting</h2>
                 <p>Hoisted</p>
-                <iframe data-media="hoisting" src="codemirror.html"></iframe>
+                <rframe data-media="hoisting" src="codemirror.html"></rframe>
                 <p><a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html" target="_blank">Refer</a></p>
             </section>
             <section>
                 <h2>Functions Cont.</h2>
                 <p>Closures</p>
                 <p><small>A closure—unlike a plain function pointer—enables a function to access those non-local variables even when invoked outside its immediate lexical scope.</small></p>
-                <iframe data-media="closure" src="codemirror.html"></iframe>
+                <rframe data-media="closure" src="codemirror.html"></rframe>
                 <p><small>Create Calculator Like this Sum(5)(10) should return 10</small></p>
             </section>
         </section>
@@ -243,12 +273,12 @@
             <section>
                 <h2>Create Objects</h2>
                 <p>Three common ways to create new objects</p>
-                <iframe class="fragment" data-media="objectcre" src="codemirror.html"></iframe>
+                <rframe class="fragment" data-media="objectcre" src="codemirror.html"></rframe>
             </section>
             <section>
                 <h2>Objects Properties</h2>
                 <p>Four common ways to create new properties of objects</p>
-                <iframe class="fragment" data-media="objectprop" src="codemirror.html"></iframe>
+                <rframe class="fragment" data-media="objectprop" src="codemirror.html"></rframe>
                 <p>Refer <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties">defineProperties and defineProperty</a>.</p></p>
             </section>
             <section>
@@ -290,12 +320,12 @@
             <section>
                 <h2>Singleton class Method 1</h2>
                 <p>Method 1</p>
-                <iframe data-media="singleton1" src="codemirror.html"></iframe>
+                <rframe data-media="singleton1" src="codemirror.html"></rframe>
             </section>
             <section>
                 <h2>Singleton class Method 2</h2>
                 <p>Method 2</p>
-                <iframe data-media="singleton2" src="codemirror.html"></iframe>
+                <rframe data-media="singleton2" src="codemirror.html"></rframe>
             </section>
         </section>
         <section>
@@ -373,20 +403,65 @@
         ]
     });
     $(document).ready(function () {
+        var curSlide = Reveal.getCurrentSlide();
+        if(curSlide.querySelector("rframe")) {
+            var iframe = document.createElement('iframe'),
+                    rframe = curSlide.querySelector("rframe");
+            iframe.setAttribute('data-media', rframe.getAttribute('data-media'));
+            iframe.setAttribute('src', 'codemirror.html');
+            rframe.appendChild(iframe);
+        }
         Reveal.addEventListener("slidechanged",function(event){
+            var curSlide = event.currentSlide,
+                    prevSlide = event.previousSlide;
+            if(curSlide.querySelector("rframe")) {
+                var iframe = document.createElement('iframe'),
+                        rframe = curSlide.querySelector("rframe");
+                iframe.setAttribute('data-media', rframe.getAttribute('data-media'));
+                iframe.setAttribute('src', 'codemirror.html');
+                rframe.appendChild(iframe);
+                Reveal.layout();
+            }
+            if(prevSlide.querySelector("iframe")) {
+                $(prevSlide).find('iframe').remove();
+            }
             ga('send', 'pageview', {
                 'page': event.indexh,
                 'title': document.title + ' : Slide ' + event.indexh
             });
         });
+        window.openFrame = function(mode) {
+            var currentSlide = $(Reveal.getCurrentSlide());
+            if(currentSlide.find('iframe').length === 0) {
+                var iframe = document.createElement('iframe');
+                iframe.setAttribute('src', 'codemirror.html');
+                iframe.setAttribute('data-media', mode);
+                iframe.classList.add('fixed-top');
+                currentSlide.append(iframe);
+            }
+            else {
+                currentSlide.find('iframe').remove()
+            }
+        };
+        window.closeIframe = function() {
+            $(Reveal.getCurrentSlide()).find('iframe').remove();
+        };
         document.addEventListener("keypress", function (event) {
             var key = event.which || event.keyCode;
-            if (key === 99) {
+            if (key === 99) { // 13 is enter
                 var currentSlide = $(Reveal.getCurrentSlide());
-                if(currentSlide.find('iframe').length === 0) {
-                    var iframe = document.createElement('iframe');
-                    iframe.classList.add('fixed-top');
+                if(currentSlide[0].querySelector("rframe") && currentSlide.find('iframe').length === 0) {
+                    var iframe = document.createElement('iframe'),
+                            rframe = currentSlide[0].querySelector("rframe");
+                    iframe.setAttribute('data-media', rframe.getAttribute('data-media'));
                     iframe.setAttribute('src', 'codemirror.html');
+                    rframe.appendChild(iframe);
+                    Reveal.layout();
+                }
+                else if(currentSlide.find('iframe').length === 0) {
+                    var iframe = document.createElement('iframe');
+                    iframe.setAttribute('src', 'codemirror.html');
+                    iframe.classList.add('fixed-top');
                     currentSlide.append(iframe);
                 }
                 else {

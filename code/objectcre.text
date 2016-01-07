@@ -2,3 +2,7 @@
 var newObject = {}; // or
 var newObject = Object.create(null); // or
 var newObject = new Object();
+function someFunction() {
+}
+var newObject = new someFunction();
+var newObject = new Object(someFunction.prototype);

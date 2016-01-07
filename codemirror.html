@@ -178,30 +178,29 @@
                 }
             });
         }
-        var console = (function (oldCons) {
-            return {
-                log: function () {
-                    oldCons.log.apply(this, arguments);
-                    output.setValue(output.getValue() + text + '\n');
-                },
-                info: function (text) {
-                    oldCons.info(text);
-                    output.setValue(output.getValue() + text + '\n');
-                },
-                warn: function (text) {
-                    oldCons.warn(text);
-                    output.setValue(output.getValue() + text + '\n');
-                },
-                error: function (text) {
-                    oldCons.error(text);
-                    output.setValue(output.getValue() + text + '\n');
+        function takeOverConsole(){
+            var console = window.console;
+            if (!console) return;
+            function intercept(method){
+                var original = console[method];
+                console[method] = function(){
+                    // do sneaky stuff
+                    output.setValue(output.getValue() + Array.prototype.slice.apply(arguments).join(' ') + '\n');
+                    if (original.apply){
+                        // Do this for normal browsers
+                        original.apply(console, arguments);
+                    }else{
+                        // Do this for IE
+                        var message = Array.prototype.slice.apply(arguments).join(' ');
+                        original(message);
+                    }
                 }
-            };
-        }(window.console));
-
-        //Then redefine the old console
-        window.console = console;
-
+            }
+            var methods = ['log', 'warn', 'error', 'info'];
+            for (var i = 0; i < methods.length; i++)
+                intercept(methods[i]);
+        }
+        takeOverConsole();
         window.runCode = function () {
             (function () {
                 output.setValue('');
